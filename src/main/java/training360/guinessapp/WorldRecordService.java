@@ -38,18 +38,11 @@ public class WorldRecordService {
         }
         String oldRecorderName = recorderRepository.findById(worldRecord.getRecorderId()).orElseThrow(() -> new IllegalArgumentException()).getName();
         Double oldWorldRecord = worldRecord.getValue();
+        Double difference = newWorldRecord - oldWorldRecord;
 
         setNewWorldRecord(recorderId, newWorldRecord, worldRecord);
 
-        BeatWorldRecordDto beatWorldRecordDto = new BeatWorldRecordDto(
-                worldRecord.getDescription(),
-                worldRecord.getUnitOfMeasure(),
-                oldRecorderName,
-                oldWorldRecord,
-                newRecorder.getName(),
-                newWorldRecord,
-                newWorldRecord - oldWorldRecord
-        );
+        BeatWorldRecordDto beatWorldRecordDto = new BeatWorldRecordDto(worldRecord.getDescription(), worldRecord.getUnitOfMeasure(), oldRecorderName, oldWorldRecord, newRecorder.getName(), newWorldRecord, difference);
         return beatWorldRecordDto;
     }
 

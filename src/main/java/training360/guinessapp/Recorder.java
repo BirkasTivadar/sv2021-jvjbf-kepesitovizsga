@@ -19,8 +19,10 @@ public class Recorder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "recorder_name")
     private String name;
 
+    @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
     public Recorder(String name, LocalDate dateOfBirth) {

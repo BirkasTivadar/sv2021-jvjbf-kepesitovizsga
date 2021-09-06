@@ -22,11 +22,14 @@ public class WorldRecord {
 
     private Double value;
 
+    @Column(name = "unit_of_measure")
     private String UnitOfMeasure;
 
+    @Column(name = "date_of_record")
     private LocalDate dateOfRecord;
 
-   private Long recorderId;
+    @Column(name = "recorder_id")
+    private Long recorderId;
 
 
     public WorldRecord(String description, Double value, String unitOfMeasure, LocalDate dateOfRecord, Long recorderId) {

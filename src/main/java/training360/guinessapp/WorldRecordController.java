@@ -21,17 +21,14 @@ public class WorldRecordController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public WorldRecordDto createWorldRecord(@Valid @RequestBody WorldRecordCreateCommand command){
+    public WorldRecordDto createWorldRecord(@Valid @RequestBody WorldRecordCreateCommand command) {
         return worldRecordService.createWorldRecord(command);
     }
 
     @PutMapping("{id}/beatrecords")
-    public BeatWorldRecordDto beatWorldRecord(@PathVariable("id") long id, BeatWorldRecordCommand command){
+    public BeatWorldRecordDto beatWorldRecord(@PathVariable("id") long id, BeatWorldRecordCommand command) {
         return worldRecordService.beatWorldRecord(id, command.getId(), command.getNewWorldRecord());
     }
-
-
-
 
 
 }
