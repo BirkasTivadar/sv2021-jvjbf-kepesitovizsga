@@ -21,7 +21,7 @@ public class WorldRecordService {
     private RecorderRepository recorderRepository;
 
     public WorldRecordDto createWorldRecord(WorldRecordCreateCommand command) {
-        String recorderName = recorderRepository.findById(command.getRecorderId()).orElseThrow(() -> new IllegalArgumentException("Recorder not found"))
+        String recorderName = recorderRepository.findById(command.getRecorderId()).orElseThrow(() -> new NotFoundException(command.getRecorderId()))
                 .getName();
         WorldRecord worldRecord = new WorldRecord(command.getDescription(), command.getValue(), command.getUnitOfMeasure(), command.getDateOfRecord(), command.getRecorderId());
         repository.save(worldRecord);
