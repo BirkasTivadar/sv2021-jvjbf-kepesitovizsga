@@ -31,7 +31,7 @@ public class WorldRecordService {
 
     @Transactional
     public BeatWorldRecordDto beatWorldRecord(long recorderId, Long worldRecordId, Double newWorldRecord) {
-        Recorder newRecorder = recorderRepository.findById(recorderId).orElseThrow(() -> new IllegalArgumentException("Recorder not found"));
+        Recorder newRecorder = recorderRepository.findById(recorderId).orElseThrow(() -> new NotFoundException(recorderId));
         WorldRecord worldRecord = repository.findById(worldRecordId).orElseThrow(() -> new IllegalArgumentException("World record not found"));
         if (newWorldRecord < worldRecord.getValue()) {
             throw new IllegalArgumentException("Can not beat");
